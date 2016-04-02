@@ -10,9 +10,10 @@ function renderEmptyMessage() {
 }
 
 function renderMessage({ date, author, text }) {
-  console.log(date);
+  const by = (author && author.username) || 'You'
+
   return (
-    <Text key={date}>{author.username} says {text}</Text>
+    <Text>{by} - {text}</Text>
   );
 }
 

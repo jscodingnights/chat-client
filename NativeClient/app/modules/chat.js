@@ -4,12 +4,10 @@ export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 
 export function createMessage(text) {
-  return (dispatch, getState) => {
-    const { user: author } = getState();
+  return (dispatch) => {
     return dispatch(socket.action({
       type: CREATE_MESSAGE,
       message: {
-        author,
         text
       }
     }));
@@ -17,7 +15,7 @@ export function createMessage(text) {
 };
 
 export function receiveMessage(message) {
-  console.log('receiving message', message);
+  debugger;
   return {
     type: RECEIVE_MESSAGE,
     message
@@ -26,6 +24,7 @@ export function receiveMessage(message) {
 
 export default function chatReducer(state = [], action) {
   switch(action.type) {
+    case CREATE_MESSAGE:
     case RECEIVE_MESSAGE:
       return [...state, action.message];
 
