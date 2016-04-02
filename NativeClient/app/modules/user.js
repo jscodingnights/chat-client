@@ -7,14 +7,15 @@ export const UPDATE_USER = 'UPDATE_USER';
 export function createCurrentUser(user) {
   return (dispatch, getState) => {
     const { user } = getState();
-    return dispatch({
+    return dispatch(socket.action({
       type: CREATE_USER,
       user
-    });
+    }));
   };
 };
 
 export function loginUser(user) {
+  debugger;
   return {
     type: LOGIN_USER,
     user
@@ -27,8 +28,6 @@ export function updateUser(user) {
     user
   }
 };
-
-socket.on(LOGIN_USER, loginUser);
 
 export default function userReducer(state = {}, action) {
   switch(action.type) {

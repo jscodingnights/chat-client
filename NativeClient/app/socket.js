@@ -7,4 +7,21 @@ var io = require("socket.io-client/socket.io");
 
 var socket = io('localhost:3000', {jsonp: false});
 
-module.exports = socket;
+module.exports = {
+  on(event, cb) {
+    console.log('SOCKET:ON', event);
+    socket.on(event, (...args) => {
+      console.log('SOCKET:RECEIVED', event, ...args);
+      cb(...args);
+    });
+  },
+
+  emit: socket.emit.bind(socket),
+
+  action(action) {
+    return {
+      ...action,
+      server: true
+    };
+  }
+};
