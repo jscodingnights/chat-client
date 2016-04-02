@@ -10,8 +10,7 @@ export function createMessage(text) {
       type: CREATE_MESSAGE,
       message: {
         author,
-        text,
-        date: (new Date()).getMilliseconds()
+        text
       }
     }));
   };
@@ -28,7 +27,6 @@ export function receiveMessage(message) {
 export default function chatReducer(state = [], action) {
   switch(action.type) {
     case RECEIVE_MESSAGE:
-    case CREATE_MESSAGE:
       return [...state, action.message];
 
     default:

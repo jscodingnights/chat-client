@@ -10,6 +10,7 @@ function renderEmptyMessage() {
 }
 
 function renderMessage({ date, author, text }) {
+  console.log(date);
   return (
     <Text key={date}>{author.username} says {text}</Text>
   );

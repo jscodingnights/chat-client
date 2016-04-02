@@ -15,7 +15,6 @@ export function createCurrentUser(user) {
 };
 
 export function loginUser(user) {
-  debugger;
   return {
     type: LOGIN_USER,
     user
@@ -36,8 +35,7 @@ export default function userReducer(state = {}, action) {
 
     case CREATE_USER:
       return {
-        ...state,
-        created: new Date()
+        ...state
       };
 
     case UPDATE_USER:
