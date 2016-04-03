@@ -34,6 +34,10 @@ const io = require('socket.io-client/socket.io');
 const socket = io('jscn-chat.herokuapp.com', { jsonp: false });
 ```
 
+`socket` has two methods of importance.  `emit` and `on` which send and listen to events respectively.  When any event is dispatched corresponding to the event name given to `on`, the callback is executed with the included payload.
+
+When you first connect, your username is set to "Anonymous".  This can be changed (see Step 4).
+
 ### Step 2: Sending Messages
 
 ```javascript
@@ -46,9 +50,7 @@ const messageEventData = {
 socket.emit('CREATE_MESSAGE', messageEventData);
 ```
 
->**IMPORTANT** When you emit a message, it is not emitted back to you.  A client is responsible for displaying its own messages (this is standard socket.io broadcast behavior).
-
-Until you set up your username, a name will be assigned for you as "Anonymous #".
+>**IMPORTANT** When you emit a `CREATE_MESSAGE` event, you will not receive the corresponding `RECEIVE_MESSAGE` event.  That is, a client is responsible for displaying its own messages and need not wait for a socket response before doing so.
 
 ### Step 3: Receiving Messages
 
