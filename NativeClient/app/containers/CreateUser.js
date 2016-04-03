@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import UsernameEntry from '../components/UsernameEntry';
 import Button from '../components/Button';
-import { updateUser, createCurrentUser } from '../modules/user';
+import { updateUser, updateCurrentUser } from '../modules/user';
 
 function CreateUser({ onChangeText, onSubmit }) {
   return (
@@ -18,6 +18,6 @@ export default connect(
   ({ user: { name } }) => ({ name }),
   (dispatch) => ({
     onChangeText: (username) => dispatch(updateUser({ username })),
-    onSubmit: () => dispatch(createCurrentUser())
+    onSubmit: () => dispatch(updateCurrentUser())
   })
 )(CreateUser)
