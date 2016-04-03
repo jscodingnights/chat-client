@@ -8,7 +8,7 @@ import { updateUser, updateCurrentUser } from '../modules/user';
 function CreateUser({ onChangeText, onSubmit }) {
   return (
     <View>
-      <UsernameEntry onChangeText={onChangeText} />
+      <UsernameEntry onChangeText={onChangeText} onSubmitEditing={onSubmit} />
       <Button onPress={onSubmit}>Let's Go!</Button>
     </View>
   );

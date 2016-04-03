@@ -4,15 +4,16 @@ import styleContext from '../style';
 
 const style = styleContext.extend({});
 
-export default function UsernameEntry({ onChangeText, onSubmit }) {
+export default function UsernameEntry({ onChangeText, onSubmitEditing }) {
   return (
     <View>
       <Text>What is your name?</Text>
-      <TextBox onChangeText={onChangeText} />
+      <TextBox onChangeText={onChangeText} onSubmitEditing={onSubmitEditing} />
     </View>
   );
 };
 
 UsernameEntry.propTypes = {
-  onChangeText: React.PropTypes.func.isRequired
+  onChangeText: React.PropTypes.func.isRequired,
+  onSubmitEditing: React.PropTypes.func.isRequired
 };
