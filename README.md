@@ -16,7 +16,7 @@ You have a choice from where you'd like to start.
 
 When connecting via Socket.IO, you can leave off the "https://" bit. 
 
-[See note about alternative `action` event syntax below](#alternative-action- event-syntax).
+[See note about alternative `action` event syntax below](#alternative-action-event-syntax).
 
 ### Step 1: Connect to the server
 
