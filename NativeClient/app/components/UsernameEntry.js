@@ -1,8 +1,5 @@
 import React, { View, Text, TouchableHighlight } from 'react-native';
 import TextBox from './TextBox';
-import styleContext from '../style';
-
-const style = styleContext.extend({});
 
 export default function UsernameEntry({ onChangeText, onSubmitEditing }) {
   return (

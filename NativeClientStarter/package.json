@@ -1,0 +1,17 @@
+{
+  "name": "NativeClientStarter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
+  "dependencies": {
+    "cairn": "^0.6.1",
+    "react": "^0.14.8",
+    "react-native": "^0.22.2",
+    "react-redux": "^4.4.1",
+    "redux": "^3.3.1",
+    "redux-thunk": "^2.0.1",
+    "socket.io-client": "^1.4.5"
+  }
+}

@@ -9,7 +9,7 @@ import { createMessage } from '../modules/chat';
 
 function Messages({ user, chat, onSubmitEditing }) {
   return (
-    <View style={{flex:1}}>
+    <View {...style('page')}>
       <View {...style('username')}>
         <Text {...style('usernameText')}>{user.username}</Text>
       </View>

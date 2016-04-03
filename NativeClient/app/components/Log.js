@@ -1,5 +1,15 @@
 import React, { View, Text, ScrollView } from 'react-native';
-import style from '../style';
+import styleContext from '../style';
+
+const style = styleContext.extend({
+  log: {
+    flex: 1,    
+    borderBottomWidth: 1,
+    borderColor: '$light',
+    paddingBottom: 10,
+    marginBottom: 10
+  }
+});
 
 function renderEmptyMessage() {
   return (

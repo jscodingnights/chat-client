@@ -9,6 +9,11 @@ const style = styleContext.extend({
     
     backgroundColor: '$primary',
     height: 50
+  },
+
+  buttonLabel: {
+    fontWeight: 'bold',
+    color: '$white'
   }
 });
 
@@ -21,3 +26,8 @@ export default function Button({ onPress, children }) {
     </TouchableHighlight>
   );
 }
+
+Button.propTypes = {
+  children: React.PropTypes.node.isRequired,
+  onPress: React.PropTypes.func.isRequired
+};

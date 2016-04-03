@@ -1,24 +1,35 @@
 import React, { View, Text, TextInput, TouchableHighlight } from 'react-native';
-import style from '../style';
+import styleContext from '../style';
+
+const style = styleContext.extend({
+  textInput: {
+    height: 40,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderColor: '$light', 
+    borderWidth: 1,
+    marginBottom: 20
+  }
+});
 
 export default function TextBox({ value, onChangeText, onSubmitEditing, onFocus }) {
   return (
-      <TextInput
-        ref={ c => this.textbox = c }
+    <TextInput
+      ref={ c => this.textbox = c }
 
-        value={value}
-        onChangeText={onChangeText}
-        onFocus={onFocus}
-        returnKeyType={'send'}
-        blurOnSubmit={false}
-        autoFocus={true}
-        onSubmitEditing={(e) => {
-          this.textbox.setNativeProps({ text: '' });
-          if (onSubmitEditing) {
-            onSubmitEditing(e);
-          }
-        }}
-        {...style('textInput')} />
+      value={value}
+      onChangeText={onChangeText}
+      onFocus={onFocus}
+      returnKeyType={'send'}
+      blurOnSubmit={false}
+      autoFocus={true}
+      onSubmitEditing={(e) => {
+        this.textbox.setNativeProps({ text: '' });
+        if (onSubmitEditing) {
+          onSubmitEditing(e);
+        }
+      }}
+      {...style('textInput')} />
   );
 }
 

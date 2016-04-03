@@ -1,15 +1,8 @@
-import React, { View, Text } from 'react-native';
-import { bindActionCreators } from 'redux';
+import React, { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import style from '../style';
 
-import * as ChatActions from '../modules/chat';
-import * as UserActions from '../modules/user';
-
-import Log from '../components/Log';
-import TextBox from '../components/TextBox';
-import Button from '../components/Button';
 import CreateUser from './CreateUser';
 import Messages from './Messages';
 
