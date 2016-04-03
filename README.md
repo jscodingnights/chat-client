@@ -18,7 +18,7 @@ When connecting via Socket.IO, you can leave off the "https://" bit.
 
 [See note about alternative `action` event syntax below](#alternative-action-event-syntax).
 
-### Step 1: Connect to the server
+### Step 1: Connecting to the Server
 
 Using the URL above, establish a socket connection.
 
@@ -37,22 +37,26 @@ const socket = io('jscn-chat.herokuapp.com', { jsonp: false });
 ### Step 2: Sending Messages
 
 ```javascript
-const myMessage = { 
+const messageEventData = { 
     message: { 
         text: 'Hello World!' 
     }
 };
 
-socket.emit('CREATE_MESSAGE', myMessage);
+socket.emit('CREATE_MESSAGE', messageEventData);
 ```
 
-Note that when you emit a message, it is not emitted back to you.  A client is responsible for displaying its own messages (this is standard socket.io broadcast behavior).
+>**IMPORTANT** When you emit a message, it is not emitted back to you.  A client is responsible for displaying its own messages (this is standard socket.io broadcast behavior).
 
 Until you set up your username, a name will be assigned for you as "Anonymous #".
 
 ### Step 3: Receiving Messages
 
 ```javascript
+const appState = {
+    messages: []
+};
+
 socket.on('RECEIVE_MESSAGE', (incomingMessage) => {
     // incomingMessage ==> {
     //     type: 'RECEIVE_MESSAGE',
@@ -65,18 +69,18 @@ socket.on('RECEIVE_MESSAGE', (incomingMessage) => {
     //     }
     // }
     
-    alert(incomingMessage.message.text);
+    appState.messages.push(incomingMessage.message);
 });
 ```
 
-### Step 4: Setting your username
+### Step 4: Updating Your User Profile
 
 When you first connect, you are assigned a username of "Anonymous".  You can change this using the event `UPDATE_USER` so that your name is sent along with any messages you create.
 
 When you successfully update your user, an event will be sent back of the type `RECEIVE_USER` to provide the full state of the user that the server has.  You can use this to sync your local user state with that of the server.
 
 ```javascript
-const myUser = {
+const appState = {
     user: {
         username: 'Sally Sue'
     }
@@ -91,23 +95,28 @@ socket.on('RECEIVE_USER', (incomingMessage) => {
     //         created: 1459693594853 // Epoch
     //     }
     // }
+    
+    // Update local user state
+    appState.user = incomingMessage.user;
 });
 
 // Give the server an update of your user details
 socket.emit('UPDATE_USER', myUser);
 ```
 
-### Step 5: Display other active users
+### Step 5: Displaying Other Members
 
-When you first connect, and whenever a user joins, leaves, or changes their profile data, the entire list of active users is broadcasted via `MEMBERS_UPDATE`.  This is heavy-handed obviously, but a nice simplification. Rather than trying to make individual user updates locall, simply discard your entire local state of users and update with the state given.
+When you first connect, and whenever a user joins, leaves, or changes their profile data, the entire list of active users is broadcasted via `MEMBERS_UPDATE`.  This is heavy-handed obviously, but a nice simplification. Rather than trying to make individual user updates locally, simply discard your entire local state of users and update with the state given.
 
 ```
-const otherUsers = [];
+const appState = {
+    members: []
+};
 
 socket.on('MEMBERS_UPDATE', (incomingMessage) => {
     // incomingMessage ==> {
     //     type: 'MEMBERS_UPDATE',
-    //     users: [{
+    //     members: [{
     //         username: 'Anonymous'
     //     },{
     //         username: 'Sally Sue',
@@ -116,16 +125,18 @@ socket.on('MEMBERS_UPDATE', (incomingMessage) => {
     // }
 
     // Blast away current state and re-render
-    otherUsers = incomingMessage.users;
+    appState.members = incomingMessage.members;
 });
 ```
 
 
 ## Alternative `action` event syntax
 
-All events can also be listened to, or emitted, via an event called `action` where the payload contains an object with a `type` property corresponding to the event type.  This is because Socket.IO does not support wildcard matching, and if you wanted to have a single event handler receive every event, that'd be otherwise not possible without a plugin.
+All events can also be listened to, or emitted, via a unified `action` event where the payload contains an object with a `type` property corresponding to the event type.  
 
-This is necessary for the plugin [Redux-socket.io](https://github.com/itaylor/redux-socket.io).
+This is because Socket.IO does not support wildcard matching, and if you wanted to have a single event handler receive every event, that'd be otherwise not possible without a plugin.
+
+This is choice also makes the use of [Redux-socket.io](https://github.com/itaylor/redux-socket.io) possible if you choose.
 
 ```javascript
 // Receive all action types
