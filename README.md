@@ -22,16 +22,23 @@ When connecting via Socket.IO, you can leave off the "https://" bit.
 
 Using the URL above, establish a socket connection.
 
+#### React Native
+
 ```javascript
-// This `if` is for React Native only:
 if (!window.navigator.userAgent) {
   // Fix socket.io check
   window.navigator.userAgent = 'react-native';
 }
 
-// All clients (for RN, use the require syntax to avoid hoisting bugs... trust me)
 const io = require('socket.io-client/socket.io');
-const socket = io('jscn-chat.herokuapp.com', { jsonp: false });
+const socket = io('jscn-chat-2.herokuapp.com', { jsonp: false, transports: ['websocket'] });
+```
+
+#### Web
+
+```javascript
+const io = require('socket.io-client/socket.io');
+const socket = io('jscn-chat-2.herokuapp.com');
 ```
 
 `socket` has two methods of importance.  `emit` and `on` which send and listen to events respectively.  When any event is dispatched corresponding to the event name given to `on`, the callback is executed with the included payload.
