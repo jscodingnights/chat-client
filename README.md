@@ -2,12 +2,18 @@
 
 You have a choice from where you'd like to start.
 
-1. React Native + Complete Implementation = NativeClient
-2. React Native Starter = NativeClientStarter
-3. React Web Starter = WebClientStarter
+1. On your own, do whatever client type you want and make your own project/folder from scratch.
+2. Clone this repo and begin with one of the provided apps.
+
+#### Available Starter Apps
+NativeClient = React Native + Redux (Complete, working implementation)
+NativeClientStarter = React Native (No redux, only a component example)
+React Web Starter = React on the web (No redux, only a component example)
 
 ## Helpful Resources
 - [SocketIO Chat Example](http://socket.io/get-started/chat/) - Ignore the server part.
+- [React Tutorial](https://facebook.github.io/react/docs/tutorial.html) - Super basic intro
+- [Redux Sample Todo](http://redux.js.org/docs/basics/ExampleTodoList.html) - Can see all the parts on one page
 - [Example Redux + React App](https://github.com/jscodingnights/react-tic-tac-toe) - React Tic-Tac-Toe App, made at a previous meetup
 
 ## API Implementation Guide

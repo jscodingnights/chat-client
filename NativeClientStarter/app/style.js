@@ -2,6 +2,8 @@
  * Cairn lib docs:
  * 
  * https://github.com/adamterlson/cairn
+ *
+ * If you like it, hit the (★) button :D
  */
 
 import cairn, { compose, variables } from 'cairn';

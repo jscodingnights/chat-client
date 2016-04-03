@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import Chat from './app/containers/Chat';
 import store from './app/store';
 
-class messenger extends React.Component{
+class NativeClient extends React.Component{
   constructor() {
     super();
   }
@@ -18,4 +18,4 @@ class messenger extends React.Component{
   }
 }
 
-AppRegistry.registerComponent('NativeClient', () => messenger);
+AppRegistry.registerComponent('NativeClient', () => NativeClient);
