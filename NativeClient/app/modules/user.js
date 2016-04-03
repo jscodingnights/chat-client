@@ -1,6 +1,6 @@
 import socket from '../socket';
 
-export const LOGIN_USER = 'LOGIN_USER';
+export const RECEIVE_USER = 'RECEIVE_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 
 export function updateCurrentUser(user) {
@@ -10,9 +10,9 @@ export function updateCurrentUser(user) {
   };
 };
 
-export function loginUser(user) {
+export function receiveUser(user) {
   return {
-    type: LOGIN_USER,
+    type: RECEIVE_USER,
     user
   };
 };
@@ -26,7 +26,7 @@ export function updateUser(user) {
 
 export default function userReducer(state = {}, action) {
   switch(action.type) {
-    case LOGIN_USER:
+    case RECEIVE_USER:
       return action.user;
 
     case UPDATE_USER:
