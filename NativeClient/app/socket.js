@@ -5,7 +5,7 @@ if (!window.navigator.userAgent) {
 
 var io = require("socket.io-client/socket.io");
 
-var socket = io('localhost:3000', {jsonp: false});
+var socket = io('jscn-chat-2.herokuapp.com', {jsonp: false});
 
 module.exports = {
   on(event, cb) {

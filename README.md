@@ -23,10 +23,10 @@ When connecting via Socket.IO, you can leave off the "https://" bit.
 Using the URL above, establish a socket connection.
 
 ```javascript
-// This is for React Native only:
+// This `if` is for React Native only:
 if (!window.navigator.userAgent) {
   // Fix socket.io check
-  window.navigator.userAgent = "react-native";
+  window.navigator.userAgent = 'react-native';
 }
 
 // All clients (for RN, use the require syntax to avoid hoisting bugs... trust me)
@@ -101,21 +101,21 @@ socket.on('RECEIVE_USER', (incomingMessage) => {
 });
 
 // Give the server an update of your user details
-socket.emit('UPDATE_USER', myUser);
+socket.emit('UPDATE_USER', appState.user);
 ```
 
 ### Step 5: Displaying Other Members
 
-When you first connect, and whenever a user joins, leaves, or changes their profile data, the entire list of active users is broadcasted via `MEMBERS_UPDATE`.  This is heavy-handed obviously, but a nice simplification. Rather than trying to make individual user updates locally, simply discard your entire local state of users and update with the state given.
+When you first connect, and whenever a user joins, leaves, or changes their profile data, the entire list of active users is broadcasted via `RECEIVE_MEMBERS`.  This is heavy-handed obviously, but a nice simplification. Rather than trying to make individual user updates locally, simply discard your entire local state of users and update with the state given.
 
 ```
 const appState = {
     members: []
 };
 
-socket.on('MEMBERS_UPDATE', (incomingMessage) => {
+socket.on('RECEIVE_MEMBERS', (incomingMessage) => {
     // incomingMessage ==> {
-    //     type: 'MEMBERS_UPDATE',
+    //     type: 'RECEIVE_MEMBERS',
     //     members: [{
     //         username: 'Anonymous'
     //     },{
