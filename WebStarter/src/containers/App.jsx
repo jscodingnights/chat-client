@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from '../components/Button.jsx';
+
 /**
  * PRO-TIP: Containers know about application state.  They include within
  * them other containers and components.  They should have no (or very
@@ -7,15 +9,14 @@ import React from 'react';
  * purposes.
  */
 export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div>
-                Hello world!
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        Hello world!
+        <Button onClick={() => alert('pressed')}>
+          Alert
+        </Button>
+      </div>
+    );
+  }
 }

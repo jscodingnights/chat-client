@@ -10,7 +10,7 @@ You have a choice from where you'd like to start.
 - **WebClientStarter** - React (No redux, only a component example)
 - **NativeClient** - React Native + Redux (Complete, working implementation) - This is only available on the `answer` branch.  `git checkout answer`
 
-## Helpful Resources
+### Helpful Resources
 - [SocketIO Chat Example](http://socket.io/get-started/chat/) - Ignore the server part.
 - [React Tutorial](https://facebook.github.io/react/docs/tutorial.html) - Super basic intro
 - [Redux Sample Todo](http://redux.js.org/docs/basics/ExampleTodoList.html) - Can see all the parts on one page
@@ -25,7 +25,7 @@ npm install
 ````
 
 ### Native
-Complete the Requirements in the [Getting Started](https://facebook.github.io/react-native/docs/getting-started.html) guide.  I recommend not attempting to do both iOS and Android support simultaneously, pick one.
+Complete the Requirements in the [Getting Started](https://facebook.github.io/react-native/docs/getting-started.html) guide.
 
 ### Web
 From the web folder, run `npm run dev` and navigate to [http://localhost:8080/webpack-dev-server/index.html](http://localhost:8080/webpack-dev-server/index.html).
