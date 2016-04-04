@@ -8,7 +8,7 @@ You have a choice from where you'd like to start.
 #### Provided Starting Points
 - **NativeClientStarter** - React Native (No redux, only a component example)
 - **WebClientStarter** - React (No redux, only a component example)
-- **NativeClient** - React Native + Redux (Complete, working implementation) - This is only available on the `answer` branch.  `git checkout master`
+- **NativeClient** - React Native + Redux (Complete, working implementation) - This is only available on the `answer` branch.  `git checkout answer`
 
 ## Helpful Resources
 - [SocketIO Chat Example](http://socket.io/get-started/chat/) - Ignore the server part.
