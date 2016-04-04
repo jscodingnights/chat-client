@@ -46,20 +46,21 @@ Using the URL above, establish a socket connection.
 #### React Native
 
 ```javascript
+// Be sure to use require, as import is hoisted.  The if needs to come first as well.  Just... don't change these lines... :)
 if (!window.navigator.userAgent) {
   // Fix socket.io check
   window.navigator.userAgent = 'react-native';
 }
 
 const io = require('socket.io-client/socket.io');
-const socket = io('jscn-chat-2.herokuapp.com', { jsonp: false, transports: ['websocket'] });
+const socket = io('jscn-chat.herokuapp.com', { jsonp: false, transports: ['websocket'] });
 ```
 
 #### Web
 
 ```javascript
-const io = require('socket.io-client/socket.io');
-const socket = io('jscn-chat-2.herokuapp.com');
+import io from 'socket.io-client';
+const socket = io('jscn-chat.herokuapp.com');
 ```
 
 `socket` has two methods of importance.  `emit` and `on` which send and listen to events respectively.  When any event is dispatched corresponding to the event name given to `on`, the callback is executed with the included payload.

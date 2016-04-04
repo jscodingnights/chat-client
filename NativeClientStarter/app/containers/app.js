@@ -31,7 +31,7 @@ export default class App extends React.Component {
         <Text {...style('header welcomeMessage')}>
           &lt;Insert Chat Client Here&gt;
         </Text>
-        <Button onPress={() => {}}>Press me (I do nothing)!</Button>
+        <Button onPress={() => alert('Hi there')}>Press me</Button>
       </View>
     );
   }
