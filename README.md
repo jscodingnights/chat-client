@@ -111,7 +111,7 @@ When you first connect, you are assigned a username of "Anonymous".  You can cha
 When you successfully update your user, an event will be sent back of the type `RECEIVE_USER` to provide the full state of the user that the server has.  You can use this to sync your local user state with that of the server.
 
 ```javascript
-const appState = {
+const userData = {
     user: {
         username: 'Sally Sue'
     }
@@ -128,11 +128,11 @@ socket.on('RECEIVE_USER', (incomingMessage) => {
     // }
     
     // Update local user state
-    appState.user = incomingMessage.user;
+    userData.user = incomingMessage.user;
 });
 
 // Give the server an update of your user details
-socket.emit('UPDATE_USER', appState.user);
+socket.emit('UPDATE_USER', userData);
 ```
 
 ### Step 5: Displaying Other Members
