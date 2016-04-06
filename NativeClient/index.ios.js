@@ -1,4 +1,4 @@
-import React, { AppRegistry, View } from 'react-native';
+import React, { AppRegistry } from 'react-native';
 
 import { Provider } from 'react-redux';
 import Chat from './app/containers/Chat';
